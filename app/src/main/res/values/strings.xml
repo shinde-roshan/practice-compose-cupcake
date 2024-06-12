@@ -8,4 +8,12 @@
     <string name="subtotal_price">Subtotal %s</string>
     <string name="cancel">Cancel</string>
     <string name="next">Next</string>
+    <string name="quantity">Quantity</string>
+    <string name="flavor">Flavor</string>
+    <string name="pickup_date">Pickup date</string>
+    <string name="send">Send Order to Another App</string>
+    <plurals name="cupcakes">
+        <item quantity="one">%d cupcake</item>
+        <item quantity="other">%d cupcakes</item>
+    </plurals>
 </resources>
