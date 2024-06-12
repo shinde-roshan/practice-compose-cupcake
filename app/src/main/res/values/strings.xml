@@ -5,4 +5,7 @@
     <string name="one">One</string>
     <string name="six">Six</string>
     <string name="twelve">Twelve</string>
+    <string name="subtotal_price">Subtotal %s</string>
+    <string name="cancel">Cancel</string>
+    <string name="next">Next</string>
 </resources>
