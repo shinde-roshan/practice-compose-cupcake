@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">cupcake</string>
+    <string name="app_name">Cupcake</string>
+    <string name="back_button">Back Button</string>
 </resources>
