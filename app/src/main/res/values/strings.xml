@@ -2,9 +2,9 @@
     <string name="app_name">Cupcake</string>
     <string name="back_button">Back Button</string>
     <string name="order_cupcake">Order Cupcake</string>
-    <string name="one">One</string>
-    <string name="six">Six</string>
-    <string name="twelve">Twelve</string>
+    <string name="one_cupcake">One Cupcake</string>
+    <string name="six_cupcakes">Six Cupcakes</string>
+    <string name="twelve_cupcakes">Twelve Cupcakes</string>
     <string name="subtotal_price">Subtotal %s</string>
     <string name="cancel">Cancel</string>
     <string name="next">Next</string>

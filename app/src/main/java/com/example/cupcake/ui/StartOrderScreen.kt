@@ -75,7 +75,11 @@ fun StartOrderScreen (
 fun StartOrderScreenPreview() {
     CupcakeTheme {
         StartOrderScreen(
-            quantityOptions = listOf(Pair(R.string.one, 1), Pair(R.string.six, 6), Pair(R.string.twelve, 12)),
+            quantityOptions = listOf(
+                Pair(R.string.one_cupcake, 1),
+                Pair(R.string.six_cupcakes, 6),
+                Pair(R.string.twelve_cupcakes, 12)
+            ),
             modifier = Modifier
                 .fillMaxSize()
                 .padding(dimensionResource(id = R.dimen.padding_medium))
