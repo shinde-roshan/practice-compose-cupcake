@@ -25,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.cupcake.R
+import com.example.cupcake.ui.components.FormattedPriceLabel
 import com.example.cupcake.ui.theme.CupcakeTheme
 
 @Composable
@@ -99,16 +100,6 @@ fun SelectOptionScreen(
             }
         }
     }
-}
-
-@Composable
-fun FormattedPriceLabel(subtotal: String, modifier: Modifier)
-{
-    Text(
-        text = stringResource(R.string.subtotal_price, subtotal),
-        modifier = modifier,
-        style = MaterialTheme.typography.headlineSmall
-    )
 }
 
 @Preview(showBackground = true)
