@@ -19,6 +19,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.cupcake.R
 import com.example.cupcake.ui.theme.CupcakeTheme
 
+enum class CupcakeScreen() {
+    Start, Flavor, Pickup, Summary
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CupcakeAppBar(
