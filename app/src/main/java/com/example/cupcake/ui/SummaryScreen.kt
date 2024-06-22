@@ -28,7 +28,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 @Composable
 fun OrderSummaryScreen(
     orderUiState: OrderUiState,
-    onSendButtonClicked: () -> Unit,
+    onSendButtonClicked: (String, String) -> Unit,
     onCancelButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -43,6 +43,14 @@ fun OrderSummaryScreen(
         Pair(stringResource(R.string.flavor), orderUiState.flavor),
         Pair(stringResource(R.string.pickup_date), orderUiState.date)
     )
+    val orderSummary = stringResource(
+        R.string.order_details,
+        numberOfCupcakes,
+        orderUiState.flavor,
+        orderUiState.date,
+        orderUiState.quantity
+    )
+    val newOrder = stringResource(R.string.new_cupcake_order)
 
     Column(
         modifier = modifier,
@@ -71,7 +79,7 @@ fun OrderSummaryScreen(
             ) {
                 Button(
                     modifier = Modifier.fillMaxWidth(),
-                    onClick = onSendButtonClicked
+                    onClick = { onSendButtonClicked (newOrder, orderSummary) }
                 ) {
                     Text(stringResource(R.string.send))
                 }
@@ -92,7 +100,7 @@ fun OrderSummaryPreview() {
     CupcakeTheme {
         OrderSummaryScreen(
             orderUiState = OrderUiState(0, "Test", "Test", "$300.00"),
-            onSendButtonClicked = {},
+            onSendButtonClicked = {_, _ -> },
             onCancelButtonClicked = {},
             modifier = Modifier.fillMaxHeight()
         )
