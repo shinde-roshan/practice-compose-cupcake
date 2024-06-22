@@ -80,6 +80,7 @@ fun CupcakeApp(
             composable(route = CupcakeScreen.Start.name) {
                 StartOrderScreen(
                     quantityOptions = DataSource.quantityOptions,
+                    onQuantitySelected = { qnt -> viewModel.setQuantity(qnt) },
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(dimensionResource(id = R.dimen.padding_medium))
@@ -90,6 +91,7 @@ fun CupcakeApp(
                 SelectOptionScreen(
                     subtotal = uiState.price,
                     options = DataSource.flavorOptions.map { strId -> context.resources.getString(strId) },
+                    onSelectionChanged = { flavor -> viewModel.setFlavor(flavor) },
                     modifier = Modifier.fillMaxHeight()
                 )
             }

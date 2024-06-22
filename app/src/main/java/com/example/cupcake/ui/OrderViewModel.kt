@@ -5,6 +5,7 @@ import com.example.cupcake.data.OrderUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -12,6 +13,18 @@ import java.util.Locale
 class OrderViewModel: ViewModel() {
     private val _uiState = MutableStateFlow(OrderUiState(pickupOptions = pickupOptions()))
     val uiState: StateFlow<OrderUiState> = _uiState.asStateFlow()
+
+    fun setQuantity(qnt: Int) {
+        _uiState.update {
+            it.copy(quantity = qnt)
+        }
+    }
+
+    fun setFlavor(flavor: String) {
+        _uiState.update {
+            it.copy(flavor = flavor)
+        }
+    }
 
     private fun pickupOptions(): List<String> {
         val dateOptions = mutableListOf<String>()

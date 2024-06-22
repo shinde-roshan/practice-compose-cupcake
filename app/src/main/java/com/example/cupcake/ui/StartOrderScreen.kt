@@ -26,6 +26,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 @Composable
 fun StartOrderScreen (
     quantityOptions: List<Pair<Int, Int>>,
+    onQuantitySelected: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val paddingMedium = dimensionResource(id = R.dimen.padding_medium)
@@ -60,7 +61,7 @@ fun StartOrderScreen (
         ) {
             quantityOptions.forEach { 
                 Button(
-                    onClick = {},
+                    onClick = { onQuantitySelected(it.second) },
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(text = stringResource(it.first))
@@ -80,6 +81,7 @@ fun StartOrderScreenPreview() {
                 Pair(R.string.six_cupcakes, 6),
                 Pair(R.string.twelve_cupcakes, 12)
             ),
+            onQuantitySelected = {},
             modifier = Modifier
                 .fillMaxSize()
                 .padding(dimensionResource(id = R.dimen.padding_medium))
