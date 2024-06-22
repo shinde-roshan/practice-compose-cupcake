@@ -92,6 +92,8 @@ fun CupcakeApp(
                     subtotal = uiState.price,
                     options = DataSource.flavorOptions.map { strId -> context.resources.getString(strId) },
                     onSelectionChanged = { flavor -> viewModel.setFlavor(flavor) },
+                    onNextButtonClicked = {},
+                    onCancelButtonClicked = {},
                     modifier = Modifier.fillMaxHeight()
                 )
             }
@@ -100,12 +102,16 @@ fun CupcakeApp(
                     subtotal = uiState.price,
                     options = uiState.pickupOptions,
                     onSelectionChanged = { date -> viewModel.setPickupDate(date) },
+                    onNextButtonClicked = {},
+                    onCancelButtonClicked = {},
                     modifier = Modifier.fillMaxHeight()
                 )
             }
             composable(route = CupcakeScreen.Summary.name) {
                 OrderSummaryScreen(
                     orderUiState = uiState,
+                    onSendButtonClicked = {},
+                    onCancelButtonClicked = {},
                     modifier = Modifier.fillMaxHeight()
                 )
             }
