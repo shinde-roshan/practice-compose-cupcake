@@ -6,9 +6,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+
+const val PRICE_PER_CAKE = 300
+const val SAME_DAY_DELIVERY_EXTRA_CHARGE = 150
 
 class OrderViewModel: ViewModel() {
     private val _uiState = MutableStateFlow(OrderUiState(pickupOptions = pickupOptions()))
@@ -20,7 +24,10 @@ class OrderViewModel: ViewModel() {
 
     fun setQuantity(qnt: Int) {
         _uiState.update {
-            it.copy(quantity = qnt)
+            it.copy(
+                quantity = qnt,
+                price = calculatePrice(quantity = qnt)
+            )
         }
     }
 
@@ -32,7 +39,10 @@ class OrderViewModel: ViewModel() {
 
     fun setPickupDate(pickupDate: String) {
         _uiState.update {
-            it.copy(date = pickupDate)
+            it.copy(
+                date = pickupDate,
+                price = calculatePrice(pickupDate = pickupDate)
+            )
         }
     }
 
@@ -45,5 +55,16 @@ class OrderViewModel: ViewModel() {
             calendar.add(Calendar.DATE, 1)
         }
         return dateOptions
+    }
+
+    private fun calculatePrice(
+        quantity: Int = _uiState.value.quantity,
+        pickupDate: String = _uiState.value.date
+    ): String {
+        var price = quantity * PRICE_PER_CAKE
+        if (pickupDate == pickupOptions()[0]) {
+            price += SAME_DAY_DELIVERY_EXTRA_CHARGE
+        }
+        return NumberFormat.getCurrencyInstance().format(price)
     }
 }
