@@ -26,6 +26,12 @@ class OrderViewModel: ViewModel() {
         }
     }
 
+    fun setPickupDate(pickupDate: String) {
+        _uiState.update {
+            it.copy(date = pickupDate)
+        }
+    }
+
     private fun pickupOptions(): List<String> {
         val dateOptions = mutableListOf<String>()
         val formatter = SimpleDateFormat("E MMM d", Locale.getDefault())

@@ -95,6 +95,14 @@ fun CupcakeApp(
                     modifier = Modifier.fillMaxHeight()
                 )
             }
+            composable(route = CupcakeScreen.Pickup.name) {
+                SelectOptionScreen(
+                    subtotal = uiState.price,
+                    options = uiState.pickupOptions,
+                    onSelectionChanged = { date -> viewModel.setPickupDate(date) },
+                    modifier = Modifier.fillMaxHeight()
+                )
+            }
         }
     }
 }
