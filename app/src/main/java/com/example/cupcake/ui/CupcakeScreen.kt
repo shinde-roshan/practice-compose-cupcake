@@ -14,6 +14,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -23,6 +25,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.cupcake.R
 import com.example.cupcake.data.DataSource
 import com.example.cupcake.ui.theme.CupcakeTheme
@@ -58,14 +61,16 @@ fun CupcakeAppBar(
 }
 
 @Composable
-fun CupcakeApp() {
-    val navController: NavHostController = rememberNavController()
-
+fun CupcakeApp(
+    viewModel: OrderViewModel = viewModel(),
+    navController: NavHostController = rememberNavController()
+) {
     Scaffold(
         topBar = {
             CupcakeAppBar(canNavigateBack = true, navigateUp = { })
         }
     ) { innerPadding ->
+        val uiState by viewModel.uiState.collectAsState()
 
         NavHost(
             navController = navController,
@@ -83,7 +88,7 @@ fun CupcakeApp() {
             composable(route = CupcakeScreen.Flavor.name) {
                 val context = LocalContext.current
                 SelectOptionScreen(
-                    subtotal = "",
+                    subtotal = uiState.price,
                     options = DataSource.flavorOptions.map { strId -> context.resources.getString(strId) },
                     modifier = Modifier.fillMaxHeight()
                 )
