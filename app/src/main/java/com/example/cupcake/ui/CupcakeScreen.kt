@@ -80,7 +80,10 @@ fun CupcakeApp(
             composable(route = CupcakeScreen.Start.name) {
                 StartOrderScreen(
                     quantityOptions = DataSource.quantityOptions,
-                    onQuantitySelected = { qnt -> viewModel.setQuantity(qnt) },
+                    onQuantitySelected = { qnt ->
+                        viewModel.setQuantity(qnt)
+                        navController.navigate(CupcakeScreen.Flavor.name)
+                    },
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(dimensionResource(id = R.dimen.padding_medium))
@@ -92,7 +95,9 @@ fun CupcakeApp(
                     subtotal = uiState.price,
                     options = DataSource.flavorOptions.map { strId -> context.resources.getString(strId) },
                     onSelectionChanged = { flavor -> viewModel.setFlavor(flavor) },
-                    onNextButtonClicked = {},
+                    onNextButtonClicked = {
+                        navController.navigate(CupcakeScreen.Pickup.name)
+                    },
                     onCancelButtonClicked = {},
                     modifier = Modifier.fillMaxHeight()
                 )
@@ -102,7 +107,9 @@ fun CupcakeApp(
                     subtotal = uiState.price,
                     options = uiState.pickupOptions,
                     onSelectionChanged = { date -> viewModel.setPickupDate(date) },
-                    onNextButtonClicked = {},
+                    onNextButtonClicked = {
+                        navController.navigate(CupcakeScreen.Summary.name)
+                    },
                     onCancelButtonClicked = {},
                     modifier = Modifier.fillMaxHeight()
                 )
