@@ -1,5 +1,6 @@
 package com.example.cupcake.ui
 
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -14,6 +15,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -59,7 +61,7 @@ fun CupcakeAppBar(
 fun CupcakeApp() {
     val navController: NavHostController = rememberNavController()
 
-    Scaffold (
+    Scaffold(
         topBar = {
             CupcakeAppBar(canNavigateBack = true, navigateUp = { })
         }
@@ -76,6 +78,14 @@ fun CupcakeApp() {
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(dimensionResource(id = R.dimen.padding_medium))
+                )
+            }
+            composable(route = CupcakeScreen.Flavor.name) {
+                val context = LocalContext.current
+                SelectOptionScreen(
+                    subtotal = "",
+                    options = DataSource.flavorOptions.map { strId -> context.resources.getString(strId) },
+                    modifier = Modifier.fillMaxHeight()
                 )
             }
         }
