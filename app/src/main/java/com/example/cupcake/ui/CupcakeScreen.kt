@@ -103,6 +103,12 @@ fun CupcakeApp(
                     modifier = Modifier.fillMaxHeight()
                 )
             }
+            composable(route = CupcakeScreen.Summary.name) {
+                OrderSummaryScreen(
+                    orderUiState = uiState,
+                    modifier = Modifier.fillMaxHeight()
+                )
+            }
         }
     }
 }
