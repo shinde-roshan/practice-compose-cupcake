@@ -36,6 +36,7 @@ fun OrderSummaryScreen(
 
     val numberOfCupcakes = resources.getQuantityString(
         R.plurals.cupcakes,
+        orderUiState.quantity,
         orderUiState.quantity
     )
     val items = listOf(
