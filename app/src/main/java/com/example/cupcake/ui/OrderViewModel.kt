@@ -14,6 +14,10 @@ class OrderViewModel: ViewModel() {
     private val _uiState = MutableStateFlow(OrderUiState(pickupOptions = pickupOptions()))
     val uiState: StateFlow<OrderUiState> = _uiState.asStateFlow()
 
+    fun resetOrder() {
+        _uiState.value = OrderUiState(pickupOptions = pickupOptions())
+    }
+
     fun setQuantity(qnt: Int) {
         _uiState.update {
             it.copy(quantity = qnt)

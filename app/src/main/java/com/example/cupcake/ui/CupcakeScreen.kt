@@ -98,7 +98,12 @@ fun CupcakeApp(
                     onNextButtonClicked = {
                         navController.navigate(CupcakeScreen.Pickup.name)
                     },
-                    onCancelButtonClicked = {},
+                    onCancelButtonClicked = {
+                        cancelOrderAndNavigateToStart(
+                            viewModel = viewModel,
+                            navController = navController
+                        )
+                    },
                     modifier = Modifier.fillMaxHeight()
                 )
             }
@@ -110,7 +115,12 @@ fun CupcakeApp(
                     onNextButtonClicked = {
                         navController.navigate(CupcakeScreen.Summary.name)
                     },
-                    onCancelButtonClicked = {},
+                    onCancelButtonClicked = {
+                        cancelOrderAndNavigateToStart(
+                            viewModel = viewModel,
+                            navController = navController
+                        )
+                    },
                     modifier = Modifier.fillMaxHeight()
                 )
             }
@@ -118,12 +128,25 @@ fun CupcakeApp(
                 OrderSummaryScreen(
                     orderUiState = uiState,
                     onSendButtonClicked = {},
-                    onCancelButtonClicked = {},
+                    onCancelButtonClicked = {
+                        cancelOrderAndNavigateToStart(
+                            viewModel = viewModel,
+                            navController = navController
+                        )
+                    },
                     modifier = Modifier.fillMaxHeight()
                 )
             }
         }
     }
+}
+
+private fun cancelOrderAndNavigateToStart(
+    viewModel: OrderViewModel,
+    navController: NavHostController
+) {
+    viewModel.resetOrder()
+    navController.popBackStack(CupcakeScreen.Start.name, false)
 }
 
 @Preview(showBackground = true)
