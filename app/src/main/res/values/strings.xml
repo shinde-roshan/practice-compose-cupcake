@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Cupcake</string>
+    <string name="choose_flavor">Choose Flavor</string>
+    <string name="choose_pickup_date">Choose Pickup Date</string>
+    <string name="order_summary">Order Summary</string>
     <string name="back_button">Back Button</string>
     <string name="order_cupcake">Order Cupcake</string>
     <string name="one_cupcake">One Cupcake</string>
