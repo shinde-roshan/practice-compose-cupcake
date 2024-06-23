@@ -6,6 +6,8 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -102,6 +104,7 @@ fun CupcakeApp(
                     },
                     modifier = Modifier
                         .fillMaxSize()
+                        .verticalScroll(rememberScrollState())
                         .padding(dimensionResource(id = R.dimen.padding_medium))
                 )
             }
@@ -120,7 +123,9 @@ fun CupcakeApp(
                             navController = navController
                         )
                     },
-                    modifier = Modifier.fillMaxHeight()
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                        .fillMaxHeight()
                 )
             }
             composable(route = CupcakeScreen.Pickup.name) {
@@ -137,7 +142,9 @@ fun CupcakeApp(
                             navController = navController
                         )
                     },
-                    modifier = Modifier.fillMaxHeight()
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                        .fillMaxHeight()
                 )
             }
             composable(route = CupcakeScreen.Summary.name) {
@@ -153,7 +160,9 @@ fun CupcakeApp(
                             navController = navController
                         )
                     },
-                    modifier = Modifier.fillMaxHeight()
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                        .fillMaxHeight()
                 )
             }
         }
